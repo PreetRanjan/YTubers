@@ -1,0 +1,24 @@
+﻿@model ReachRequest
+    
+    <div class="card mt-3">
+        <div class="card-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" style="position: relative; z-index: 9; top: -40px; height: 5rem; width: 5rem; fill: green;" fill="currentColor" class="bi bi-check-circle-fill d-flex mx-auto" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </svg>
+            <h5 class="text-center">Awesome!! @Model.FullName</h5>
+        </div>
+        <div class="card-body">
+            <h6>Congrats!!!</h6>
+            <p class="lead">
+                Your request for inviting @Model.YuTuber is sent. Sit back and wait for
+                the youtuber to respond. You can manage your <a href="/Some">Requests Here.</a>
+                Yout Given details are
+            </p>
+            
+            <p class="">
+                Your Message
+                @Model.Message
+            </p>
+        </div>
+        
+    </div> 

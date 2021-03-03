@@ -1,0 +1,25 @@
+﻿@model YTubers.Web.Services.ChannelData
+@{
+    ViewData["Title"] = "YuTubeProfile";
+}
+<div class="container">
+    <h3>Channel Data</h3>
+    <div class="form-group">
+        <label>Channel ID</label>
+        <h5>@Model.ChannelId</h5>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Model.ThumbnailUrl" class="d-flex mx-auto" height="auto" width="auto"/>
+        </div>
+        <div class="col-md-8">
+            <h5 class="font-weight-bold">@Model.Title</h5>
+            <h6>Subscribers - @Model.SubsCount</h6>
+            <h6>@Model.VideoCount Videos</h6>
+            <h6>Country - @Model.Country</h6>
+            <h6>Link - <a href="@Model.CustomUrl">@Model.CustomUrl</a></h6>
+            <a asp-area="User" asp-controller="Profile" asp-action="SignupAsYuTuber" asp-route-link="@Model.ChannelUrl">Create a profile as a YuTuber</a>
+        </div>
+    </div>
+</div>
+

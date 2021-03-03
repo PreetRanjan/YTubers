@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Start Chat";
+}
+<link href="~/css/Chat.css" rel="stylesheet" />
+@model MessageViewModel
+<div class="container">
+    <div>
+        <div class="p-2">
+            <h5>From - @Model.SenderName</h5>
+            <h5>To - @Model.ReceiverName</h5>
+        </div>
+        <div class="row">
+            <div class="col-6">Sent Messages</div>
+            <div class="col-6">Received Messages</div>
+        </div>
+        <ul class="list-group" id="messsages">
+            @foreach (var message in Model.Messages)
+            {
+                @*<li class="list-group-item">
+
+                        <div class="row">
+                            <div id="sentmessages" class="col-6">
+                                @if (message.SenderId == Model.SenderId)
+                                {
+                                    <div>You : @message.Text</div>
+                                }
+                            </div>
+                            <div id="recemessages" class="col-6">
+                                @if (message.Receiverid == Model.SenderId)
+                                {
+                                    <div>Received : @message.Text</div>
+                                }
+                            </div>
+                        </div>
+                    </li>*@
+                <li class="list-group-item border-0">
+                    @if (message.SenderId == Model.SenderId)
+                    {
+                    <div class="text-white row">
+                        <div class="col-6 p-0"><span class="text-muted">@message.When.ToString("hh:mm")</span><span class="bg-secondary p-2" style="border-radius:10px;">You : @message.Text </span></div>
+                        <div class="col-6"></div>
+                    </div>
+                    }
+                    @if (message.Receiverid == Model.SenderId)
+                    {
+                        <div class="text-white row">
+                            <div class="col-6"></div>
+                            <div class="col-6 p-0"><span class="text-muted">@message.When.ToString("hh:mm")</span><span class="bg-info p-2" style="border-radius:10px;">@Model.ReceiverName : @message.Text </span></div>
+                        </div>
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="row col-md-6 d-flex mx-auto p-3 mb-5">
+        @Html.Hidden("Sender", User.Identity.Name)
+        @Html.HiddenFor(c => c.ReceiverId)
+        @Html.TextAreaFor(c => c.Text, 3, 10, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Text, null, new { @class = "text-danger" })
+        <button type="button" id="btnSend" class="btn btn-primary btn-block">Send</button>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/lib/signalr/signalr.js"></script>
+
+    <script src="~/js/chat.js"></script>
+
+}

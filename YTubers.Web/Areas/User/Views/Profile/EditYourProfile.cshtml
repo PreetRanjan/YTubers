@@ -1,0 +1,83 @@
+﻿@model YTubers.Web.Models.ViewModels.YuTuberViewModel
+@{
+    ViewData["Title"] = "Edit your YuTuber Profile";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="float-left">
+            <h4>Edit profile as a YuTuber</h4>
+            <h6>The modification step to get connected with a great community</h6>
+        </div>
+        <div class="float-right">
+            <img src="@Model.ThumbnailUrl" height="100" width="100" />
+        </div>
+
+    </div>
+    <div class="card-body">
+        <form method="post" asp-area="User" asp-controller="Profile" asp-action="EditYourProfile">
+            @Html.HiddenFor(c=>c.Id)
+            @Html.HiddenFor(c => c.AppUserId)
+            @Html.HiddenFor(c => c.Country)
+            @Html.HiddenFor(c => c.ThumbnailUrl)
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Channel Name</label>
+                        <input type="text" asp-for="ChannelName" class="form-control" />
+                        <span class="text-danger" asp-validation-for="ChannelName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Channel Id</label>
+                        <input type="text" asp-for="ChannelId" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Channel Link</label>
+                        <input type="text" asp-for="ChannelLink" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Subscribers</label>
+                        <input type="text" asp-for="SubscribersCount" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Sex</label>
+                        <select class="form-control" asp-for="Sex" asp-items="Html.GetEnumSelectList(typeof(Sex))">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="text" asp-for="Age" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Channel Category</label>
+                        <select class="form-control" asp-for="CategoryId" asp-items="ViewBag.Categories as IEnumerable<SelectListItem>">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Current City</label>
+                        <div class="input-group">
+                            <input type="text" asp-for="City" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                            <span class="input-group-text">@Model.Country</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="text" asp-for="Price" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Description</label>
+                        <textarea type="text" asp-for="YourDescription" class="form-control"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+

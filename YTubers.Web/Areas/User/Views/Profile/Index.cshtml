@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container p-2">
+    <form method="post" asp-area="User" asp-controller="Profile" asp-action="YuTubeProfile">
+        <div class="form-group row-cols-4">
+            
+            <label>Enter your channel ID</label>
+            <input type="text" name="ChannelLink" value="" class="form-control" />
+
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Get Channel Details</button>
+        </div>
+    </form>
+</div>

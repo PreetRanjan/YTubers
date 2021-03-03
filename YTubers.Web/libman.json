@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "datatable@2.0.1",
+      "destination": "wwwroot/lib/jquery-datatable"
+    },
+    {
+      "library": "qrcodejs@1.0.0",
+      "destination": "wwwroot/lib/qrcode"
+    },
+    {
+      "library": "microsoft-signalr@5.0.1",
+      "destination": "wwwroot/lib/signalr"
+    }
+  ]
+}
